@@ -1,0 +1,58 @@
+body {
+    height: 100%;
+}
+
+#wrapper {
+    position: absolute;
+    display: block;
+    width: 640px;
+    margin: 0 auto;
+    height: 100%;
+    overflow: hidden;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.col {
+    position: absolute;
+    top: 0;
+    -webkit-transition: left .4s ease-out .3s, opacity .4s ease-out .3s;
+    -moz-transition: left .4s ease-out .3s, opacity .4s ease-out .3s;
+    -o-transition: left .4s ease-out .3s, opacity .4s ease-out .3s;
+}
+
+.col > li {
+    display: block;
+    width: 175px;
+    margin: 0 1em 1em 0;
+}
+
+
+.col1 {
+    left: 0;
+}
+
+.col2 {
+    left: 195px;
+}
+
+.col3 {
+    left: 390px;
+}
+
+.out-left {
+    left: -200px;
+}
+
+.out-right {
+    left: 800px;
+}
+
+.out-fade {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
