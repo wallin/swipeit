@@ -1,8 +1,6 @@
 $.fn.reverse = [].reverse;
 
 var NUM_PRODUCTS = 9;
-var SWIPE_IN_DELAY = 200;
-var SWIPE_OUT_DELAY = 150;
 
 var tmpl = {
   item: '<li><img src="img/product.jpg"></li>'
@@ -21,6 +19,8 @@ var Swipe = function (opts) {
 
 Swipe.prototype = {
   NUM_COLUMNS: 4,
+  SWIPE_IN_DELAY: 200,
+  SWIPE_OUT_DELAY: 150,
   enter: function (data) {
     var self = this;
     // Remove any existing columns
@@ -29,7 +29,7 @@ Swipe.prototype = {
       this.leave();
       _.delay(function () {
         self.enter(data);
-      }, this.numCols * SWIPE_OUT_DELAY);
+      }, this.numCols * this.SWIPE_OUT_DELAY);
       return;
     }
 
@@ -48,11 +48,11 @@ Swipe.prototype = {
     }
 
     var len = $cols.length;
-    var time = 0;
+    var time = this.SWIPE_IN_DELAY * this.numCols;
     _.each($cols, function (el, i) {
       _.delay(function () {
-        el.attr('class', 'col col' + (len - i));
-      }, time += SWIPE_IN_DELAY);
+        el.attr('class', 'col col' + (i + 1));
+      }, time -= self.SWIPE_IN_DELAY);
     });
   },
 
@@ -60,17 +60,17 @@ Swipe.prototype = {
     var self = this;
     var $cols = $('ul.col', this.el);
     var len = $cols.length;
-    var time = 0;
+    var time = this.SWIPE_OUT_DELAY * this.numCols;
     $cols.each(function (i, el) {
       _.delay(function () {
         $(el).addClass(self.outClass);
-      }, time += SWIPE_OUT_DELAY);
+      }, time -= self.SWIPE_OUT_DELAY);
     });
 
     // Remove cols
     _.delay(function () {
       $cols.remove();
-    }, time * 2);
+    }, this.SWIPE_OUT_DELAY * this.numCols * 2);
   }
 };
 
