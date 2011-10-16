@@ -5,7 +5,7 @@ body {
 #wrapper {
     position: absolute;
     display: block;
-    width: 640px;
+    width: 780px;
     margin: 0 auto;
     height: 100%;
     overflow: hidden;
@@ -47,14 +47,20 @@ ul, li {
     left: 585px;
 }
 
-
-.out-left {
-    left: -200px;
+.in-right {
+    left: -195px;
 }
-
 .out-right {
-    left: 800px;
+    left: 895px;
 }
+
+.in-left {
+    left: 895px;
+}
+.out-left {
+    left: -195px;
+}
+
 
 .out-fade {
     opacity: 0;
